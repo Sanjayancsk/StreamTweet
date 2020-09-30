@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Twitter Client</title>
+<link th:href="@{/css/tweet_main.css}" rel="stylesheet" />
+<link href='https://fonts.googleapis.com/css?family=Quicksand:300,400'
+	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300'
+	rel='stylesheet' type='text/css'>
+<link
+	href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css"
+	rel="stylesheet">
+</head>
+<body th:style="'background: url(/img/background.jpg) no-repeat center center fixed;'">
+	<div>
+		<form action="searchTweet" method="post">
+			<h4>SteamTweet</h4>
+			<input name="followerId" type="text" placeholder="Follower ID"
+				th:value="${follower}" /> <input type="text" name="hashTag"
+				placeholder="HashTag" th:value="${hashTag}" /> <input
+				class="button" type="submit" id="submit_id" value="StreamTweet" />
+		</form>
+	</div>
+	<div class="tweet" id="tweet_id">
+		<span class="first"> StreamTweet </span>
+		<ul class="timeline">
+			<table>
+				<tr th:each="prod :${prods}">
+					<div class="image_class">
+						<td>
+							<div class="avatar">
+
+								<img th:src="@{${prod.profileImageUrl}}">
+							</div>
+						</td>
+					</div>
+					<td th:text="${prod.fromUser}" class="bubble-container"></td>
+					<td th:text="${prod.text}" class="bubble"></td>
+				</tr>
+			</table>
+		</ul>
+	</div>
+</body>
+</html>
